@@ -66,7 +66,7 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        return response()->view('posts.show', [
+        return response()->view('posts.form', [
             'post' => Post::findOrFail($id),
         ]);
     }
