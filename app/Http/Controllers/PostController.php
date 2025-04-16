@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         return response()->view('posts.index', [
-            'posts' => Post::orderBy('update_at', 'desc')->get(),
+            'posts' => Post::orderBy('updated_at', 'desc')->get(),
         ]);
     }
 

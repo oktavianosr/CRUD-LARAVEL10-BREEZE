@@ -12,7 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/main.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -23,6 +23,15 @@
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
+
+                        {{-- check if a notif.success flash session --}}
+                        @if (Session::has('notif.success'))
+                        <div class="bg-blue-300 mt-2 p-4">
+                            <span class="text-white">{{ Session::get('notif.success') }}</span>
+                        </div>
+                        @endif
+
+                        {{-- check if a notif.error flash session --}}
                     </div>
                 </header>
             @endif
