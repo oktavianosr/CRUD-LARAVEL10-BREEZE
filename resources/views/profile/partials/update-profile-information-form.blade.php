@@ -47,6 +47,12 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="role_id" :value="__('Role')" />
+            <x-text-input id="role_id" name="role_id" type="text" class="mt-1 block w-full bg-dark" autocomplete="current-password" disabled value="{{ $user->role->name }}"/>
+            <x-input-error class="mt-2" :messages="$errors->get('current_password')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

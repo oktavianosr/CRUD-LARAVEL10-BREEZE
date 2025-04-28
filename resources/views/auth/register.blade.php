@@ -39,6 +39,17 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+
+        <div class="mb-4">
+            <label for="role_id" class="block text-gray-700">Tipe Role Atau Jabatan</label>
+            <select name="role_id" id="role_id" class="mt-1 block w-full" required>
+                <option value="">Pilih Role Atau Jabatan Anda</option>
+                @foreach($roles as $role)
+                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}

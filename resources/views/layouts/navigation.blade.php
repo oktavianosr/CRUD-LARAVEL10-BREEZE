@@ -16,9 +16,29 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.*')">
-                        {{ __('Posts') }}
+                    @if(Auth::user()->role->name === 'Administrator')
+                        <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.*')">
+                            {{ __('Roles') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('leave_types.index')" :active="request()->routeIs('leave_types.*')">
+                            {{ __('Leave Types') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('excel.export_import')" :active="request()->routeIs('excel.*')">
+                            {{ __('Import & Export') }}
+                        </x-nav-link>
+                    @endif
+
+
+                    <x-nav-link :href="route('leave_requests.index')" :active="request()->routeIs('leave_requests.*')">
+                        {{ __('Leave Requests') }}
                     </x-nav-link>
+
+                    @if(Auth::user()->role->name === 'Administrator')
+                        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -74,6 +94,24 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.*')">
+                {{ __('Roles') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('leave_types.index')" :active="request()->routeIs('leave_types.*')">
+                {{ __('Leave Types') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('leave_requests.index')" :active="request()->routeIs('leave_requests.*')">
+                {{ __('Leave Requests') }}
+            </x-responsive-nav-link>
+
+            @if(Auth::user()->role->name === 'Administrator')
+                <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                    {{ __('Users') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
@@ -83,13 +121,10 @@
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
 
-            <div class="mt-3 space-y-1">
+            {{-- <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('posts.index')">
-                    {{ __('posts.index') }}
-                </x-responsive-nav-link>
+                </x-responsive-nav-link> --}}
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
